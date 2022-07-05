@@ -1,0 +1,12 @@
+.my-div{
+    display: grid;
+    grid-template-columns: 15% 40% 20% 25%;
+    column-gap: 1rem;
+    row-gap: 1rem;
+}
+
+.my-div-2{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}

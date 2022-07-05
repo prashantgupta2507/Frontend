@@ -1,0 +1,106 @@
+.container-fluid {
+    padding: 15px 30px 0;
+}
+
+.mt-3, .my-3 {
+    margin-top: 1rem !important;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.card {
+    margin-bottom: 30px;
+    border: 0px;
+    border-radius: 0.625rem;
+    box-shadow: 6px 11px 41px -28px #a99de7;
+}
+.gradient-1 {
+    color: #fff !important;
+    background-image: linear-gradient(230deg, #759bff, #843cf6);
+}
+
+.card .card-body {
+    padding: 1.88rem 1.81rem;
+}
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 18px;
+}
+.text-white {
+    color: #fff !important;
+}
+.card-title {
+    margin-bottom: 0.75rem;
+}
+
+.d-inline-block {
+    display: inline-block !important;
+}
+
+.opacity-5 {
+    opacity: 0.5;
+}
+.display-5 {
+    font-size: 3rem;
+}
+.float-right {
+    position: absolute;
+    float: right !important;
+}
+
+.gradient-2{
+    color: #fff !important;
+    background-image: linear-gradient(230deg, #fc5286, #fbaaa2);
+}
+
+.gradient-3{
+    color: #fff !important;
+    background-image: linear-gradient(230deg, #ffc480, #ff763b);
+}
+
+.gradient-4{
+    color: #fff !important;
+    background-image: linear-gradient(230deg, #0e4cfd, #6a8eff);
+}
+
+.reviews{
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 5;
+}
+
+meter{
+    height: 10vh;
+    width: 100%;
+}
+
+#five_star::-webkit-meter-optimum-value ,
+#four_star::-webkit-meter-optimum-value,
+#three_star::-webkit-meter-optimum-value {
+    box-shadow: 0 5px 5px -5px #999 inset;
+    background-image: linear-gradient(90deg, #843cf6, #6a8eff);
+    background-size: 100% 100%;
+}
+
+#two_star::-webkit-meter-optimum-value,
+#one_star::-webkit-meter-optimum-value {
+    box-shadow: 0 5px 5px -5px #999 inset;
+    background-image: linear-gradient(90deg, #fc5286, #fbaaa2);
+    background-size: 100% 100%;
+}

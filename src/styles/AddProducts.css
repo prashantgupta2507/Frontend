@@ -1,0 +1,17 @@
+.add-product-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.first_div{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.second_div,
+.third_div{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+    row-gap:1rem;
+}

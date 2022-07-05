@@ -1,0 +1,185 @@
+#main-wrapper {
+    position: relative;
+}
+.nav-header .brand-logo h4{
+    color: white;
+    padding-left: 2rem;
+    padding-top: 2rem;
+}
+.nav-header {
+    height: 6rem;
+    width: 15.1875rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #7571f9;
+}
+
+.header {
+    height: 5rem;
+    width: calc(100% - 18rem);
+    z-index: 1;
+    position: relative;
+    padding: 0 0.9375rem;
+    background: #fff;
+    margin-left: 15.1875rem;
+    transition: all .2s ease;
+}
+
+.header .header-content {
+    height: 100%;
+}
+
+.nav-control {
+    cursor: pointer;
+    position: absolute;
+    left: 1.4375rem;
+    text-align: center;
+    top: 46%;
+    transform: translateY(-50%);
+}
+
+.hamburger {
+    display: inline-block;
+    right: 0;
+    position: relative;
+    top: 0.3125rem;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    width: 2.3125rem;
+    z-index: 999;
+}
+
+.hamburger .toggle-icon {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: #494949;
+}
+
+.header-right {
+    float: right;
+    line-height: 3rem;
+    margin-top: 0;
+    height: 100%;
+}
+
+.header-right ul {
+    height: 100%;
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+.header-right .icons {
+    float: left;
+    margin: 0;
+    padding: 0 0.3125rem;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+}
+
+.header-right .icons .user-img {
+    position: relative;
+    top: -7px;
+}
+.c-pointer {
+    cursor: pointer;
+}
+.position-relative {
+    position: relative !important;
+}
+
+.dropdown-menu {
+    font-size: inherit;
+}
+.dropdown-profile {
+    width: 12rem;
+}
+.drop-down {
+    display: none;
+    z-index: 9999;
+    width: 20rem;
+    top: 0rem !important;
+    position: absolute;
+    right: 0 !important;
+    left: auto !important;
+    transform: translate3d(0px, 75px, 0px) !important;
+    transition: all 0.4s ease-in-out;
+    border-top: 0;
+    background: #fff;
+    color: #000;
+    box-shadow: 0px 1px 10px 0 rgb(0 0 0 / 15%);
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 0.875rem;
+    color: #76838f;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+}
+.animated {
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.dropdown-profile ul {
+    padding: 0rem 0;
+}
+.dropdown-content-body ul {
+    padding: 0 1.25rem;
+    background-color: #fff;
+}
+
+.nk-sidebar {
+    width: 15.1875rem;
+    padding-bottom: 112px;
+    height: 100%;
+    position: absolute;
+    top: 5rem;
+    padding-top: 0;
+    z-index: 99;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.nk-sidebar-child{
+    display: flex;
+    margin: auto;
+    padding: 1rem 0;
+}
+
+.nk-sidebar-child:hover{
+    cursor: pointer;
+}
+
+.nk-sidebar-child svg{
+    position: absolute;
+    right: 0.5rem;
+}
