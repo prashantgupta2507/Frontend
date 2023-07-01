@@ -41,6 +41,7 @@ export default function NavbarMain() {
             setPopupLogin(true)
         if (!isAuthenticate)
             setIsAuthenticate(false);
+        // eslint-disable-next-line
     }, [location.pathname, isAuthenticate])
 
     const handleClickOpen = () => {
@@ -95,7 +96,7 @@ export default function NavbarMain() {
 
     return (
         <nav>
-            <img src={Logo} alt="logo" />
+            <Link to="/"><img src={Logo} alt="logo" className='img' /></Link>
             <ul>
                 <li><div className="btn-group">
                     <p className="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -108,7 +109,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Men's Top Wear &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {mens.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -116,7 +117,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Men's Bottom Wear &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {mens2.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -124,7 +125,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Women Ethnic &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {women.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -132,7 +133,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Women Western &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {women2.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -140,7 +141,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Men Footwear &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {mens3.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -148,7 +149,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Women Footwear &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {womens3.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -156,7 +157,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Watches and Accessories &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {watches.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -164,7 +165,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Bags, Suitcases & Luggage &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {bags.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -175,7 +176,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Audio &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {audio.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -183,7 +184,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Camera & Accessories &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {camera.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -191,7 +192,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Laptop Accessories &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {laptop.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -199,7 +200,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Mobile Accessories &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {mobile.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -211,7 +212,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Television &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {television.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -219,7 +220,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Washing Machines &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {washing.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -227,7 +228,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Air Conditioners &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {conditioners.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -235,7 +236,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Refrigerators &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {refrigerators.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -243,7 +244,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Home Appliances &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {appliances.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -255,7 +256,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Beauty & Personal Care &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {beauty.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -263,7 +264,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Men's Grooming &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {grooming.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -271,7 +272,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Baby Care &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {baby.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>
@@ -279,7 +280,7 @@ export default function NavbarMain() {
                                     <Link className="dropdown-item" to="/">Sports & Fitness &nbsp;&nbsp; &raquo;</Link>
                                     <ul className="dropdown-menu dropdown-submenu">
                                         {sports.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`products/${value}`}>{value}</Link></li>
+                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
                                         })}
                                     </ul>
                                 </li>

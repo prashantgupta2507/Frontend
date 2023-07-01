@@ -48,7 +48,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-export default function CartPage() {
+export default function CartPage(props) {
   const classes = useStyle();
   const history = useHistory();
 
@@ -61,12 +61,22 @@ export default function CartPage() {
   const { getCartItems } = bindActionCreators(cartActionCreators, dispatch);
 
   useEffect(() => {
-    setTimeout(() => {
+    props.setPath("/abc")
+    // eslint-disable-next-line
+  }, [])
+
+  useEffect(() => {
+    const temp = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 1000);
     if (isAuthenticate) {
       getCartItems();
     }
+
+    return () => {
+      clearTimeout(temp);
+    }
+    // eslint-disable-next-line
   }, [isAuthenticate]);
 
 

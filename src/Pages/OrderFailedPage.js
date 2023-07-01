@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import TryAgain from '../Images/try_again.png'
 
-export default function OrderFailedPage() {
+export default function OrderFailedPage(props) {
 
     const history = useHistory();
     const { isAuthenticate } = useSelector((state) => state.userReducer);
@@ -16,7 +16,13 @@ export default function OrderFailedPage() {
         setTimeout(() => {
             history.replace("/");
         }, 30000);
+        // eslint-disable-next-line
     }, []);
+
+    useEffect(()=>{
+        props.setPath("/abc")
+        // eslint-disable-next-line
+    },[])
 
     return (
         <div

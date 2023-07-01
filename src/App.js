@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import MainPage from './Components/MainPage';
@@ -16,73 +16,60 @@ import OrderFailedPage from './Pages/OrderFailedPage'
 import ErrorPage from './Pages/ErrorPage'
 
 function App() {
+
+  const [path, setPath] = useState("/")
+
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <MainPage />
-        </Route>
-        <Route exact path="/products/:category_name">
-          <div style={{ background: 'inherit', height: '100px' }}>
+    <>
+      <Router>
+        {path === "/" ?
+          <div className="App" style={{ height: '90vh' }}>
             <NavbarMain />
-          </div>
-          <Products />
-        </Route>
-        <Route exact path="/product/:product_name">
-          <div style={{ background: 'inherit', height: '100px' }}>
-            <NavbarMain />
-          </div>
-          <ProductItem />
-        </Route>
-        <Route exact path="/account">
-          <div style={{ background: 'inherit', height: '75px' }}>
-            <NavbarMain />
-          </div>
-          <MyAccountsPage />
-        </Route>
-        <Route exact path="/account/addresses">
-          <div style={{ background: 'inherit', height: '75px' }}>
-            <NavbarMain />
-          </div>
-          <MyAccountsPage />
-        </Route>
-        <Route exact path="/cart">
-          <div style={{ background: 'inherit', height: '75px' }}>
-            <NavbarMain />
-          </div>
-          <CartPage />
-        </Route>
-        <Route exact path="/checkout">
-          <div style={{ background: 'inherit', height: '75px' }}>
-            <NavbarMain />
-          </div>
-          <CheckoutPage />
-        </Route>
-        <Route exact path="/orders">
-          <div style={{ background: 'inherit', height: '75px' }}>
-            <NavbarMain />
-          </div>
-          <OrdersPage />
-        </Route>
-        <Route exact path="/admin">
-          <Admin />
-        </Route>
-        <Route exact path="/order-failed">
-          <div style={{ background: 'inherit', height: '75px' }}>
-            <NavbarMain />
-          </div>
-          <OrderFailedPage />
-        </Route>
-        <Route exact path="/order-success">
-          <div style={{ background: 'inherit', height: '75px' }}>
-            <NavbarMain />
-          </div>
-          <OrderSuccessPage />
-        </Route>
-        <Route component={ErrorPage} />
-      </Switch>
-      <ToastMessageContainer />
-    </Router>
+          </div> :
+          (path === "/admin" ? null :
+            <div style={{ background: 'inherit', height: '100px' }}>
+              <NavbarMain />
+            </div>
+          )}
+        <Switch>
+          <Route exact path="/">
+            <MainPage setPath={setPath} />
+          </Route>
+          <Route exact path="/products/:category_name">
+            <Products setPath={setPath} />
+          </Route>
+          <Route exact path="/product/:product_name">
+            <ProductItem setPath={setPath} />
+          </Route>
+          <Route exact path="/account">
+            <MyAccountsPage setPath={setPath} />
+          </Route>
+          <Route exact path="/account/addresses">
+            <MyAccountsPage setPath={setPath} />
+          </Route>
+          <Route exact path="/cart">
+            <CartPage setPath={setPath} />
+          </Route>
+          <Route exact path="/checkout">
+            <CheckoutPage setPath={setPath} />
+          </Route>
+          <Route exact path="/orders">
+            <OrdersPage setPath={setPath} />
+          </Route>
+          <Route exact path="/admin">
+            <Admin setPath={setPath} />
+          </Route>
+          <Route exact path="/order-failed">
+            <OrderFailedPage setPath={setPath} />
+          </Route>
+          <Route exact path="/order-success">
+            <OrderSuccessPage />
+          </Route>
+          <Route component={ErrorPage} setPath={setPath} />
+        </Switch>
+        <ToastMessageContainer />
+      </Router>
+    </>
   );
 }
 

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import Success from '../Images/success.png'
 
-export default function OrderSuccessPage() {
+export default function OrderSuccessPage(props) {
   const history = useHistory();
   const { isAuthenticate } = useSelector((state) => state.userReducer);
 
@@ -15,6 +15,7 @@ export default function OrderSuccessPage() {
     setTimeout(() => {
       history.replace("/orders");
     }, 30000);
+    // eslint-disable-next-line
   }, []);
 
   return (

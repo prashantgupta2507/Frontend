@@ -64,7 +64,7 @@ const useStyle = makeStyles((theme) => ({
     },
 }));
 
-export default function OrdersPage() {
+export default function OrdersPage(props) {
 
     const classes = useStyle();
     const { isAuthenticate, user } = useSelector((state) => state.userReducer);
@@ -74,6 +74,11 @@ export default function OrdersPage() {
     const { getOrderDetails } = bindActionCreators(orderActionCreators, dispatch)
     const history = useHistory();
 
+    useEffect(()=>{
+        props.setPath("/abc")
+        // eslint-disable-next-line
+    },[])
+
     useEffect(() => {
         if (!isAuthenticate) {
             history.replace("/login?ref=orders");
@@ -82,6 +87,7 @@ export default function OrdersPage() {
         setTimeout(() => {
             setIsLoading(false);
         }, 700);
+        // eslint-disable-next-line
     }, [isAuthenticate]);
 
     return isLoading ? (
@@ -113,7 +119,7 @@ export default function OrdersPage() {
                 </Grid>
             ) : (
                 <Box className={classes.emptyComponent}>
-                    <img src={noOrdersUrl} className={classes.image} />
+                    <img src={noOrdersUrl} className={classes.image} alt='orders'/>
                     <Typography style={{ fontSize: 22, fontWeight: 600 }}>
                         You have no orders
                     </Typography>

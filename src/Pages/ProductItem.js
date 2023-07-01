@@ -54,13 +54,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function DataItem() {
+export default function DataItem(props) {
     const location = useLocation()
 
     useEffect(() => {
         if (location.state === undefined || location.state === null)
             history.replace("/")
     })
+
+    useEffect(()=>{
+        props.setPath("/abc")
+        // eslint-disable-next-line
+    },[])
 
     const classes = useStyles();
     const [data, setData] = useState(location.state ? location.state.data : null)

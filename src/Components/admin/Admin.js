@@ -4,13 +4,13 @@ import AdminInventory from './Inventory/AdminInventory'
 import PendingOrders from './PendingOrders'
 import { maleAvatarUrl } from '../../constants/data'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../styles/Admin.css'
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { actionCreators } from '../../Actions/index'
 
-export default function Admin() {
+export default function Admin(props) {
 
     const [bool, setBool] = useState(true)
     const [action, setAction] = useState({
@@ -100,6 +100,11 @@ export default function Admin() {
         setAuthtoken(null)
         window.location.replace("/")
     }
+
+    useEffect(()=>{
+        props.setPath("/admin")
+        // eslint-disable-next-line
+    },[])
 
     return (
         <>

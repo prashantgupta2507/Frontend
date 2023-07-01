@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { cartActionCreators } from '../Actions';
 
-export default function Products() {
+export default function Products(props) {
     const { category_name } = useParams()
     const [data, setData] = useState([])
     const history = useHistory()
@@ -16,8 +16,16 @@ export default function Products() {
     const { addToCart } = bindActionCreators(cartActionCreators, dispatch)
 
     useEffect(() => {
+        props.setPath("/abc")
+        // eslint-disable-next-line
+    }, [])
+
+    useEffect(() => {
+
+        console.log("chayan" + category_name)
         axios.get(`http://localhost:5500/api/user/product/${category_name}`)
             .then(res => {
+                console.log(res)
                 if (res.status === 200) {
                     setData(res.data)
                 }

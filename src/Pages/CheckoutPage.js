@@ -135,7 +135,7 @@ const useStyle = makeStyles((theme) => ({
     },
 }));
 
-export default function CheckoutPage() {
+export default function CheckoutPage(props) {
     const [activeComponent, setActiveComponent] = useState({
         address: true,
         payment: false,
@@ -157,6 +157,11 @@ export default function CheckoutPage() {
 
     const history = useHistory();
 
+    useEffect(()=>{
+        props.setPath("/abc")
+        // eslint-disable-next-line
+    },[])
+
     useEffect(() => {
         if (isAuthenticate) {
             getCartItems();
@@ -167,16 +172,19 @@ export default function CheckoutPage() {
         } else {
             history.replace("/");
         }
+        // eslint-disable-next-line
     }, [isAuthenticate]);
 
     useEffect(() => {
         setOrderItems(cartItems);
+        // eslint-disable-next-line
     }, [cartItems]);
 
     useEffect(() => {
         if (cartItems == "") {
             history.replace("/");
         }
+        // eslint-disable-next-line
     }, []);
 
     const handleChange = () => {

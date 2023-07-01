@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import About from './About';
 import Contact from './Contact';
-import NavbarMain from './header/NavbarMain';
 
-export default function MainPage() {
+export default function MainPage(props) {
+
+    useEffect(()=>{
+        props.setPath("/")
+        // eslint-disable-next-line
+    },[])
+
     return (
         <React.Fragment>
-            <div className="App" style={{ height: '90vh' }}>
-                <NavbarMain />
-            </div>
             <About />
             <Contact />
         </React.Fragment>

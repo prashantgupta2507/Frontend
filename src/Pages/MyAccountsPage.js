@@ -27,17 +27,24 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function MyAccountsPage() {
+export default function MyAccountsPage(props) {
     const classes = useStyles();
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory()
 
     const { isAuthenticate } = useSelector((state) => state.userReducer);
+
+    useEffect(()=>{
+        props.setPath("/abc")
+        // eslint-disable-next-line
+    },[])
+
     useEffect(() => {
         if (!isAuthenticate) {
             history.push('/')
         }
         setIsLoading(false);
+        // eslint-disable-next-line
     }, [isAuthenticate]);
 
     return isLoading ? (

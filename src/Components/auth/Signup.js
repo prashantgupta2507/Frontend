@@ -206,6 +206,8 @@ export default function Signup() {
                 setUserInfo({ fName: makeCapitalizeText(result.Data.fName), lName: makeCapitalizeText(result.Data.lName), gender: null, phone: null, admin: Boolean(result.Data.admin), orders: [] })
                 setAuthtoken(result.Data.token)
                 toastMessage("Registration Successfull", "success")
+            }else{
+                toastMessage("User with this email already exists!!", "error");
             }
 
             //Modal Close
