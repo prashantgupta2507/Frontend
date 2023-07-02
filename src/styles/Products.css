@@ -1,0 +1,25 @@
+.card-block{
+    display: grid;
+    column-width: calc(100vw-240px);
+    grid-template-columns: repeat(4,1fr);
+    column-gap: 20px;
+}
+
+.card-img-top{
+    object-fit: contain;
+}
+.card-footer{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media screen and (width<1380px) {
+    .card-footer{
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    body{
+        max-width: 375px;
+    }
+}

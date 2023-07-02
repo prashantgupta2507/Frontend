@@ -19,6 +19,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { bindActionCreators } from "redux";
 import { actionCreators } from '../../Actions/index'
 import { useHistory } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const useStyles = makeStyles((theme) => ({
   inputs: {
@@ -51,9 +52,11 @@ export default function Login() {
   const history = useHistory()
 
   const [showPassword, setShowPassword] = useState(false);
+  const [reCaptchaValue, setReCaptchaValue] = useState(null);
   const [values, setValues] = useState({
     email: "",
     password: "",
+    reCaptchaValue
   });
   const [errors, setErrors] = useState({
     email: false,
@@ -258,6 +261,7 @@ export default function Login() {
           </FormHelperText>
         )}
       </FormControl>
+      <ReCAPTCHA sitekey={process.env.REACT_APP_SITE_KEY} onChange={setReCaptchaValue} />
       <Button
         variant="contained"
         className={`${classes.btn} my-5`}

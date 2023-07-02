@@ -20,6 +20,7 @@ import clsx from 'clsx'
 import { actionCreators } from '../../Actions/index'
 import toastMessage from '../../utils/toastMessage'
 import { makeCapitalizeText } from "../../utils/makeCapitalizeText";
+import ReCAPTCHA from 'react-google-recaptcha'
 
 const useStyles = makeStyles((theme) => ({
     signupInputs: {
@@ -48,24 +49,28 @@ export default function Signup() {
 
     const history = useHistory()
     const [showPassword, setShowPassword] = useState(false);
+    const [showOTP, setShowOTP] = useState(false);
+    const [reCaptchaValue, setReCaptchaValue] = useState(null);
+
     const [values, setValues] = useState({
         fName: "",
         lName: "",
         password: "",
-        email:""
+        email: "",
+        otp: ""
     });
     const [errors, setErrors] = useState({
         fName: false,
         lName: false,
         password: false,
-        email:false
+        email: false
     });
 
     const [errorMsg, setErrorMsg] = useState({
         fName: "",
         lName: "",
         password: "",
-        email:""
+        email: ""
     });
     const [loading, setLoading] = useState(false);
     const [submitCount, setSubmitCount] = useState(0);
@@ -95,7 +100,8 @@ export default function Signup() {
     const dispatch = useDispatch();
     const { setIsAuthenticate, setUserInfo, modalClose, setAuthtoken, setEmail, setLoginPage } = bindActionCreators(actionCreators, dispatch)
 
-    const handleClickShowPassword = () => {
+    const handleClickShowPassword = (value) => {
+
         setShowPassword(!showPassword);
     };
 
@@ -176,50 +182,86 @@ export default function Signup() {
         }
     };
 
-    const completeSignup = async () => {
-        setLoading(true);
-        let admin = false;
-        if (values.email === 'chayangupta7@gmail.com') {
-            admin = true;
-        }
-        try {
-            const res = await fetch("http://localhost:5500/api/auth/register", {
-                method: 'post',
-                headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                    "Accept": "application/json, text/plain, */*"
-                },
-                body: JSON.stringify({
-                    email: values.email,
-                    fName: makeCapitalizeText(values.fName),
-                    lName: makeCapitalizeText(values.lName),
-                    password: values.password,
-                    admin: admin
-                })
-            });
-            setLoading(false);
-            let result = await res.json()
-            if (res.status === 201) {
-                setIsAuthenticate(true);
-                setEmail(result.Data.email);
-                setUserInfo({ fName: makeCapitalizeText(result.Data.fName), lName: makeCapitalizeText(result.Data.lName), gender: null, phone: null, admin: Boolean(result.Data.admin), orders: [] })
-                setAuthtoken(result.Data.token)
-                toastMessage("Registration Successfull", "success")
-            }else{
-                toastMessage("User with this email already exists!!", "error");
-            }
+    const generateOtp = async () => {
+        const res = await fetch(`http://localhost:5500/api/otp/generate`, {
+            method: 'post',
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Accept": "application/json, text/plain, */*"
+            },
+            body: JSON.stringify({
+                email: values.email,
+                fName: values.fName,
+                lName: values.lName,
+                reCaptchaValue
+            })
+        })
 
-            //Modal Close
-            if (popupLogin)
-                modalClose();
-            if (result.Data.admin) {
-                history.replace('/admin')
-            }
-        } catch (error) {
-            setLoading(false);
-            toastMessage("Something went wrong. Please sign up later.", "error");
+        const result = await res.json();
+        if (res.status === 400) {
+            toastMessage(result.msg, "info")
+        } else if (res.status === 200) {
+            toastMessage("OTP Sent Successfully to your email", "success")
+            setShowOTP(true)
+        } else {
+            toastMessage(result.err, "error")
         }
+    }
+
+    const completeSignup = async () => {
+        if (showOTP === false) {
+            generateOtp()
+        } else {
+            setLoading(true);
+            let admin = false;
+            if (values.email === 'chayangupta7@gmail.com') {
+                admin = true;
+            }
+            try {
+                const res = await fetch("http://localhost:5500/api/otp/verify", {
+                    method: 'post',
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "*",
+                        "Accept": "application/json, text/plain, */*"
+                    },
+                    body: JSON.stringify({
+                        email: values.email,
+                        fName: makeCapitalizeText(values.fName),
+                        lName: makeCapitalizeText(values.lName),
+                        password: values.password,
+                        admin: admin,
+                        userOtp: values.otp
+                    })
+                });
+                setLoading(false);
+                let result = await res.json()
+                if (res.status === 201) {
+                    setIsAuthenticate(true);
+                    setEmail(result.Data.email);
+                    setUserInfo({ fName: makeCapitalizeText(result.Data.fName), lName: makeCapitalizeText(result.Data.lName), gender: null, phone: null, admin: Boolean(result.Data.admin), orders: [] })
+                    setAuthtoken(result.Data.token)
+                    toastMessage("Registration Successfull", "success")
+
+                    //Modal Close
+                    if (popupLogin)
+                        modalClose();
+                    if (result.Data.admin) {
+                        history.replace('/admin')
+                    }
+                } else if (res.status === 400) {
+                    toastMessage(result.msg, "info");
+                } else {
+                    toastMessage(result.err, "error")
+                }
+
+            } catch (error) {
+                setLoading(false);
+                toastMessage("Something went wrong. Please sign up later.", "error");
+            }
+        }
+
     };
 
     const handleInputs = (e) => {
@@ -326,6 +368,24 @@ export default function Signup() {
                     </FormHelperText>
                 )}
             </FormControl>
+            <ReCAPTCHA sitekey={process.env.REACT_APP_SITE_KEY} onChange={setReCaptchaValue} />
+            {showOTP ?
+                <>
+                    <TextField
+                        id={errors.otp ? "standard-basic" : "standard-start-adornment"}
+                        label="Enter OTP"
+                        className={`${classes.signupInputs} my-1`}
+                        value={values.otp}
+                        onChange={handleInputs}
+                        name="otp"
+                        error={errors.otp}
+                        helperText={errors.otp && `${errorMsg.otp}`}
+                    />
+                    <p className={classes.para} style={{ color: 'deepskyblue', textDecoration: 'underline', fontSize: '1rem', cursor: 'pointer' }} onClick={generateOtp}>
+                        Resend Otp
+                    </p>
+                </> : null}
+
             <p className={classes.para}>
                 By continuing, you agree to Bestof Shopping Terms of Use and Privacy Policy.
             </p>
@@ -339,7 +399,7 @@ export default function Signup() {
                 {loading ? (
                     <CircularProgress size={24} className={classes.buttonProgress} />
                 ) : (
-                    "Signup"
+                    showOTP ? "Signup" : "Send OTP"
                 )}
             </Button>
             <Button

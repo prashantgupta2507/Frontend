@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { cartActionCreators } from '../Actions';
+import '../styles/Products.css';
 
 export default function Products(props) {
     const { category_name } = useParams()
@@ -52,9 +53,9 @@ export default function Products(props) {
             </div>
             <hr />
             <div className='container-fluid' style={{ backgroundColor: '#e4e7ed' }}>
-                <div className="row">
+                <div className="card-block">
                     {data.length > 0 ? data.map((value, index) => {
-                        return (<div className="col-sm-4 mt-2" key={index}>
+                        return (<div className="mt-2" key={index}>
                             <div className="card" >
                                 <img src={value.main_image_url} className="card-img-top" alt="..." style={{ height: '50vh' }} />
                                 <div className="card-body">
