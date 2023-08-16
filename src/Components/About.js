@@ -9,6 +9,7 @@ export default function About() {
                 <h2><span>About </span> Us</h2>
             </div>
         </div>
+
         <div className="container-fluid">
             <div className="row">
                 <div className="col-lg-5 align-items-stretch video-box">
@@ -24,9 +25,11 @@ export default function About() {
 
                             Sincerely,<br />
                             Mr. Prashant Gupta</h6>
+                            <a href='https://prashantgupta2507.github.io/Portfolio-Prashant-Gupta/' target='_blank'>Know More</a>
                     </div>
                 </div>
             </div>
         </div>
+        
     </section>;
 }

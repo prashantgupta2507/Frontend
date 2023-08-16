@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Logo from '../../Images/logo.png'
 import AuthPage from '../../Pages/AuthPage'
+import SubCategory from './SubCategory';
 import { useDispatch, useSelector } from 'react-redux';
 import { Dialog, DialogContent, Box, Typography, } from '@mui/material';
 import { Link } from "react-router-dom";
@@ -51,49 +52,48 @@ export default function NavbarMain() {
     const handleClose = () => {
         modalClose()
     }
+    
+    const fashion_name = ["Men's Top Wear", "Men's Bottom Wear", "Women Ethnic", "Women Western", "Men Footwear", "Women Western", "Watches and Accessories","Bags, Suitcases & Luggage"];
+    const fashion =
+    [   
+        ["Men's T-Shirts", "Men's Casual Shirts", "Men's Formal Shirts", "Men's Kurtas", "Men's Blazers", "Men's Raincot", "Men's Suit"],
+        ["Men's Jeans", "Men's Trousers", "Men's Trackpants", "Men's Shorts", "Men's Dhoti", "Men's Ethnic Pyjama", "Men's Cargos"],
+        ["Women Sarees", "Women Kurtas & Kurtis", "Ethnic Dresses", "Women Gowns", "Women Lehenga Cholis", "Women Laggings & Patialas", "Women Dupatta"],
+        ["Women Tops", "Women Dresses", "Women T-shirts & Polo T-shirts", "Women Jeans", "Women Trouser", "Women Jumpsuit"],
+        ["Men's Sports Shoes", "Men's Casual Shoes", "Men's Sandals & Floaters", "Men's Slippers & Flip Flops", "Men's Formal Shoes", "Men's Ethnic Shoes"],
+        ["Women Flats", "Women Heels", "Women Wedges", "Women Slipper Flip Flops", "Women Casual Shoes", "Women Sports Shoes", "Women Sneakers"],
+        ["Men & Women Watches", "Men & Women Sunglasses", "Wallets", "Men & Women Belts", "Women Fashion Jewellery", "Men Fashion Jewellery"],
+        ["Backpacks", "Suitcases & Trolleys", "Dufflebags", "Handbags", "Travel Accessories"]
+    ]
 
-    const mens = ["Men's T-Shirts", "Men's Casual Shirts", "Men's Formal Shirts", "Men's Kurtas", "Men's Blazers", "Men's Raincot", "Men's Suit"];
 
-    const mens2 = ["Men's Jeans", "Men's Trousers", "Men's Trackpants", "Men's Shorts", "Men's Dhoti", "Men's Ethnic Pyjama", "Men's Cargos"];
+    const electronics_name = ["Audio", "Camera & Accessories", "Laptop Accessories", "Mobile Accessories"];
+    const electronics = 
+    [
+        ["Bluetooth Headphones", "Wired Headphones", "True Wireless Earbuds", "Bluetooth Speakers", "Soundbars", "Home Theatres", "Remote Control"],
+        ["DSLR & Mirrorless", "Camera tripods", "Camera Lenses", "Drone", "Flashes"],
+        ["Mouse", "Laptop Keyboards", "Router", "Data Cards", "UPS", "USB Gadgets", "Laptop Battery", "Laptop Adapter", "Wireless USB Adapter", "Processor"],
+        ["Plain Cases", "Designer Cases", "Screen Guards", "Mobile Cable", "Mobile Flash", "Mobile USB Gadget", "Camera Lens Protectors"]
+    ]
 
-    const women = ["Women Sarees", "Women Kurtas & Kurtis", "Ethnic Dresses", "Women Gowns", "Women Lehenga Cholis", "Women Laggings & Patialas", "Women Dupatta"];
+    const appliances_name = ["Television","Washing Machines","Air Conditioners","Refrigerators","Home Appliances"]
+    const appliances = 
+    [
+        ["Big Screen TVs", "Smart TVs", "4K UHD TVs", "OLED TVs", "QLED TVs", "Nanocell TVs"],
+        ["Fully Automatic Front Load", "Semi Automatic Top Load", "Fully Automatic Top Load", "Wash Dryers", "Washer Only"],
+        ["Inverter ACs", "Split ACs", "Window ACs", "5 Star ACs", "1 Ton ACs", "1.5 Ton ACs"],
+        ["Single Door", "Double Door", "Triple Door", "Side by Side", "4 Door", "Mini Refrigerators"],
+        ["Irons", "Water Purifiers", "Inverters", "Vaccum Cleaners", "Sewing Machines", "Air Purifiers"]
+    ]
 
-    const women2 = ["Women Tops", "Women Dresses", "Women T-shirts & Polo T-shirts", "Women Jeans", "Women Trouser", "Women Jumpsuit"];
-
-    const mens3 = ["Men's Sports Shoes", "Men's Casual Shoes", "Men's Sandals & Floaters", "Men's Slippers & Flip Flops", "Men's Formal Shoes", "Men's Ethnic Shoes"];
-
-    const womens3 = ["Women Flats", "Women Heels", "Women Wedges", "Women Slipper Flip Flops", "Women Casual Shoes", "Women Sports Shoes", "Women Sneakers"];
-
-    const watches = ["Men & Women Watches", "Men & Women Sunglasses", "Wallets", "Men & Women Belts", "Women Fashion Jewellery", "Men Fashion Jewellery"];
-
-    const bags = ["Backpacks", "Suitcases & Trolleys", "Dufflebags", "Handbags", "Travel Accessories"];
-
-    const audio = ["Bluetooth Headphones", "Wired Headphones", "True Wireless Earbuds", "Bluetooth Speakers", "Soundbars", "Home Theatres", "Remote Control"];
-
-    const camera = ["DSLR & Mirrorless", "Camera tripods", "Camera Lenses", "Drone", "Flashes"];
-
-    const laptop = ["Mouse", "Laptop Keyboards", "Router", "Data Cards", "UPS", "USB Gadgets", "Laptop Battery", "Laptop Adapter", "Wireless USB Adapter", "Processor"];
-
-    const mobile = ["Plain Cases", "Designer Cases", "Screen Guards", "Mobile Cable", "Mobile Flash", "Mobile USB Gadget", "Camera Lens Protectors"];
-
-    const television = ["Big Screen TVs", "Smart TVs", "4K UHD TVs", "OLED TVs", "QLED TVs", "Nanocell TVs"];
-
-    const washing = ["Fully Automatic Front Load", "Semi Automatic Top Load", "Fully Automatic Top Load", "Wash Dryers", "Washer Only"];
-
-    const conditioners = ["Inverter ACs", "Split ACs", "Window ACs", "5 Star ACs", "1 Ton ACs", "1.5 Ton ACs"]
-
-    const refrigerators = ["Single Door", "Double Door", "Triple Door", "Side by Side", "4 Door", "Mini Refrigerators"];
-
-    const appliances = ["Irons", "Water Purifiers", "Inverters", "Vaccum Cleaners", "Sewing Machines", "Air Purifiers"];
-
-    const beauty = ["Bath & Oral Care", "Personal Hygiene", "Eye Makeup", "Face Makeup"];
-
-    const grooming = ["Face Washes", "Beard Oils", "Hair Styling", "Shaving Essentials", "Soaps"];
-
-    const baby = ["Baby Diapers", "Baby Wipes", "Baby Bath & Grooming", "Baby Food"];
-
-    const sports = ["Badminton", "Cricket", "Cycling", "Football", "Fitness Equipments", "Supports"];
-
+    const others_name = ["Beauty & Personal Care","Men's Grooming","Baby Care","Sports & Fitness"]
+    const others = 
+    [
+        ["Bath & Oral Care", "Personal Hygiene", "Eye Makeup", "Face Makeup"],
+        ["Face Washes", "Beard Oils", "Hair Styling", "Shaving Essentials", "Soaps"],
+        ["Baby Diapers", "Baby Wipes", "Baby Bath & Grooming", "Baby Food"],
+        ["Badminton", "Cricket", "Cycling", "Football", "Fitness Equipments", "Supports"]
+    ]
     return (
         <nav>
             <Link to="/"><img src={Logo} alt="logo" className='img' /></Link>
@@ -105,185 +105,32 @@ export default function NavbarMain() {
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><Link className="dropdown-item" to="/">Fashion &nbsp;&nbsp; &raquo;</Link>
                             <ul className="dropdown-menu dropdown-submenu">
-                                <li>
-                                    <Link className="dropdown-item" to="/">Men's Top Wear &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {mens.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Men's Bottom Wear &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {mens2.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Women Ethnic &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {women.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Women Western &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {women2.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Men Footwear &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {mens3.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Women Footwear &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {womens3.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Watches and Accessories &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {watches.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Bags, Suitcases & Luggage &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {bags.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
+                                
+                                {fashion.map((value,index)=>{
+                                    return <SubCategory category={value} name = {fashion_name[index]} />
+                                })}                              
                             </ul></li>
+
                         <li><Link className="dropdown-item" to="/">Electronics &nbsp;&nbsp; &raquo;</Link>
                             <ul className="dropdown-menu dropdown-submenu">
-                                <li>
-                                    <Link className="dropdown-item" to="/">Audio &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {audio.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Camera & Accessories &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {camera.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Laptop Accessories &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {laptop.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Mobile Accessories &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {mobile.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
+                                {electronics.map((value,index)=>{
+                                    return <SubCategory category={value} name = {electronics_name[index]} />
+                                })} 
                             </ul>
                         </li>
+
                         <li><Link className="dropdown-item" to="/">Appliances &nbsp;&nbsp; &raquo;</Link>
                             <ul className="dropdown-menu dropdown-submenu">
-                                <li>
-                                    <Link className="dropdown-item" to="/">Television &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {television.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Washing Machines &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {washing.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Air Conditioners &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {conditioners.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Refrigerators &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {refrigerators.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Home Appliances &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {appliances.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
+                                {appliances.map((value,index)=>{
+                                    return <SubCategory category={value} name = {appliances_name[index]} />
+                                })} 
                             </ul>
                         </li>
                         <li><Link className="dropdown-item" to="/">Beauty, Toys & More &nbsp;&nbsp; &raquo;</Link>
                             <ul className="dropdown-menu dropdown-submenu">
-                                <li>
-                                    <Link className="dropdown-item" to="/">Beauty & Personal Care &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {beauty.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Men's Grooming &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {grooming.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Baby Care &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {baby.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
-                                <li>
-                                    <Link className="dropdown-item" to="/">Sports & Fitness &nbsp;&nbsp; &raquo;</Link>
-                                    <ul className="dropdown-menu dropdown-submenu">
-                                        {sports.map((value, index) => {
-                                            return <li key={index}><Link className="dropdown-item" to={`/products/${value}`}>{value}</Link></li>
-                                        })}
-                                    </ul>
-                                </li>
+                                {others.map((value,index)=>{
+                                    return <SubCategory category={value} name = {others_name[index]} />
+                                })} 
                             </ul>
                         </li>
                     </ul>

@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { cartActionCreators } from '../Actions';
 import '../styles/Products.css';
+import toastMessage from '../utils/toastMessage';
 
 export default function Products(props) {
     const { category_name } = useParams()
@@ -22,8 +23,6 @@ export default function Products(props) {
     }, [])
 
     useEffect(() => {
-
-        console.log("chayan" + category_name)
         axios.get(`http://localhost:5500/api/user/product/${category_name}`)
             .then(res => {
                 console.log(res)
@@ -43,12 +42,13 @@ export default function Products(props) {
     const AddToCart = (value) => {
         value.qty = 1;
         addToCart(value)
+        toastMessage("Item Added to Cart", "success");
     }
 
     return (
         <>
             <div style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', alignItems: 'center' }}>
-                <h4>Best of Appliances</h4>
+                <h4>Best of {category_name}</h4>
                 <p>{data.length} Items</p>
             </div>
             <hr />

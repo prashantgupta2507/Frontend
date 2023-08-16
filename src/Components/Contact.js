@@ -12,19 +12,19 @@ export default function Contact() {
             <div className="info-wrap">
                 <div className="row">
                     <div className="col-lg-4 col-md-6 info">
-                        <i className="fas fa-map-marker-alt" />
+                        <i className=" move-down fas fa-map-marker-alt" />
                         <h4>Location:</h4>
                         <p>224 Carrizo RDG <br />Floresville, Texas 78114</p>
                     </div>
                     <div className="col-lg-4 col-md-6 info mt-4 mt-lg-0">
-                        <i className="fas fa-envelope" />
+                        <i className="move-down fas fa-envelope" />
                         <h4>Email:</h4>
                         <p>prashantgupta2507@gmail.com</p>
                     </div>
                     <div className="col-lg-4 col-md-6 info mt-4 mt-lg-0">
-                        <i className="fas fa-phone-alt" />
+                        <i className="move-down fas fa-phone-alt" />
                         <h4>Call:</h4>
-                        <p>+1 5589 55488 51 <br />+1 5589 22475 14</p>
+                        <p>+91 7024663637 <br />+1 5589 22475 14</p>
                     </div>
                 </div>
             </div>
